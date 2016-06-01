@@ -1,0 +1,15 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "indent": [2, 2],
+    "no-undef": 2,
+    "curly": 2,
+    "no-use-before-define": 2,
+    "space-before-blocks": [2, "always"],
+    "linebreak-style": [2, "unix"],
+    "no-trailing-spaces": 2
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "templock",
+  "version": "0.0.1",
+  "description": "Temporary resource locking after failed attempts, usefull for mitigation password bruteforcing",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "lodash": "^4.13.1",
+    "memory-cache": "^0.1.5",
+    "redis": "^2.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calibr/templock.git"
+  },
+  "keywords": [
+    "temporary",
+    "lock",
+    "resources",
+    "brute",
+    "force"
+  ],
+  "author": "calibr <awcalibr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calibr/templock/issues"
+  },
+  "homepage": "https://github.com/calibr/templock#readme"
+}
