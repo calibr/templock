@@ -53,8 +53,8 @@ describe("work cycle", function() {
     call[0].itemId.should.equal(itemId);
   });
 
-  it("item should be locked by user strategy", function() {
-    return tempLock.isLocked(itemId, ["user"]).then(function(locked) {
+  it("item should be locked by user_23 category", function() {
+    return tempLock.isLocked(itemId, ["user_23"]).then(function(locked) {
       locked.should.equal(true);
     });
   });
@@ -65,9 +65,9 @@ describe("work cycle", function() {
     });
   });
 
-  it("item should be locked without passing strategies", function() {
+  it("item shouldn't be locked without passing strategies(main strategy)", function() {
     return tempLock.isLocked(itemId).then(function(locked) {
-      locked.should.equal(true);
+      locked.should.equal(false);
     });
   });
 
@@ -93,16 +93,19 @@ describe("work cycle", function() {
     call[0].itemId.should.equal(itemId);
   });
 
-  it("item should be locked without passing strategies", function() {
+  it("item should be locked without passing strategies(main)", function() {
     return tempLock.isLocked(itemId).then(function(locked) {
       locked.should.equal(true);
     });
   });
 
-  it("item shouldn't be locked by user strategy", function() {
-    return tempLock.isLocked(itemId, ["user"]).then(function(locked) {
-      locked.should.equal(false);
+  it("item shouldn't be locked by users categories", function() {
+    return Promise.each(["c1", "c2", "c3", "c4", "c5"], function(category) {
+      return tempLock.isLocked(itemId, category).then(function(locked) {
+        locked.should.equal(false);
+      });
     });
+
   });
 
   it("item should be locked by main strategy", function() {
