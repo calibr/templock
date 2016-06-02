@@ -4,11 +4,13 @@ var Promise = require("bluebird");
 
 describe("work cycle", function() {
   var userStrategy = {
+    name: "user",
     category: /^user_[0-9]/,
     attempts: 3,
     lockFor: 2
   };
   var mainStrategy = {
+    name: "main",
     category: "main",
     attempts: 5,
     lockFor: 2
@@ -51,7 +53,19 @@ describe("work cycle", function() {
     call[0].itemId.should.equal(itemId);
   });
 
-  it("item should be locked", function() {
+  it("item should be locked by user strategy", function() {
+    return tempLock.isLocked(itemId, ["user"]).then(function(locked) {
+      locked.should.equal(true);
+    });
+  });
+
+  it("item shouldn't be locked by main strategy", function() {
+    return tempLock.isLocked(itemId, ["main"]).then(function(locked) {
+      locked.should.equal(false);
+    });
+  });
+
+  it("item should be locked without passing strategies", function() {
     return tempLock.isLocked(itemId).then(function(locked) {
       locked.should.equal(true);
     });
@@ -79,8 +93,20 @@ describe("work cycle", function() {
     call[0].itemId.should.equal(itemId);
   });
 
-  it("item should be locked", function() {
+  it("item should be locked without passing strategies", function() {
     return tempLock.isLocked(itemId).then(function(locked) {
+      locked.should.equal(true);
+    });
+  });
+
+  it("item shouldn't be locked by user strategy", function() {
+    return tempLock.isLocked(itemId, ["user"]).then(function(locked) {
+      locked.should.equal(false);
+    });
+  });
+
+  it("item should be locked by main strategy", function() {
+    return tempLock.isLocked(itemId, ["main"]).then(function(locked) {
       locked.should.equal(true);
     });
   });
