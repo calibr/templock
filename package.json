@@ -1,6 +1,6 @@
 {
   "name": "templock",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Temporary resource locking after failed attempts, usefull for mitigation password bruteforcing",
   "main": "index.js",
   "directories": {
@@ -19,6 +19,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/calibr/templock.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "temporary",
