@@ -71,6 +71,10 @@ describe("work cycle", function() {
     });
   });
 
+  it("should reset counters", function() {
+    return tempLock.resetCounters(itemId);
+  });
+
   it("item shouldn't be locked after lock time", function() {
     return tempLock.storage.clear().then(function() {
       return tempLock.isLocked(itemId).then(function(locked) {
