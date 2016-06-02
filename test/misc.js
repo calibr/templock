@@ -13,4 +13,25 @@ describe("Misc", function() {
     strategy.attempts.should.equal(10);
     strategy.lockFor.should.equal(20);
   });
+
+  it("get/set strategies", function() {
+    var strategy = {
+      name: "test",
+      category: "test2",
+      attempts: 10,
+      lockFor: 20
+    };
+    var tempLock = new TempLock({
+      strategies: [strategy]
+    });
+    var strategies = tempLock.getStrategies();
+    strategies.length.should.equal(1);
+    strategies[0].should.equal(strategy);
+
+    var strategy2 = tempLock.buildStrategy("myStrategy", "category", 10, 20);
+    tempLock.setStrategies([strategy2]);
+    strategies = tempLock.getStrategies();
+    strategies.length.should.equal(1);
+    strategies[0].should.equal(strategy2);
+  });
 });
