@@ -1,6 +1,6 @@
 {
   "name": "templock",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Temporary resource locking after failed attempts, usefull for mitigation password bruteforcing",
   "main": "index.js",
   "directories": {
